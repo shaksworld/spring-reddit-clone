@@ -1,19 +1,21 @@
 package com.programming.techie.springredditclone.service;
 
 import com.programming.techie.springredditclone.exceptions.SpringRedditException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-class CommentServiceTest {
+public class CommentServiceTest {
 
     @Test
-    @DisplayName("Test Should Pass When Comment do not Contains Swear Words")
-    void shouldNotContainSwearWordsInsideComment() {
+    @DisplayName("Test Should Pass When Comment Do Not Contain Swear")
+    void shouldNotContainsSwearWordsInsideComment() {
+
         CommentService commentService = new CommentService(null, null, null, null, null, null, null);
-        assertThat(commentService.containsSwearWords("This is a comment")).isFalse();
+        Assertions.assertFalse(commentService.containsSwearWords("This is a comment without swear words"));
     }
 
     @Test
@@ -27,5 +29,3 @@ class CommentServiceTest {
                 .hasMessage("Comments contains unacceptable language");
     }
 }
-
-
